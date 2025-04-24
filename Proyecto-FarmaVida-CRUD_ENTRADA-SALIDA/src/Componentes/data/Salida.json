@@ -1,0 +1,19 @@
+[
+    {
+      "id_venta": "10",
+      "id_emp": "123",
+      "id_cli": "456",
+      "f_venta": "2024-09-17",
+      "observaciones": "Primera venta",
+      "id_estado": "5"
+    },
+        {
+          "id_venta": "11",
+          "id_emp": "145",
+          "id_cli": "46",
+          "f_venta": "2024-09-17",
+          "observaciones": "Ultima venta",
+          "id_estado": "5"
+        }
+  ]
+  

@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../public/Assets/background1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.box-area{
+    width: 930px;
+}
+.right-box{
+    padding: 40px 30px 40px 40px;
+}
+::placeholder{
+    font-size: 16px;
+}
+.rounded-4{
+    border-radius: 20px;
+    background: #23539E;
+}
+.header-text{
+    text-align: center;
+}
+.btns{
+    display: flex;
+    justify-content: space-around;
+}
+.boton{
+    width: 165px;
+    align-self: center;
+    margin: 0 0 25px 0;
+    border: none;
+}
+.rounded-5{
+    border-radius: 30px;
+}
+.img-fluid1{
+    width: 100%;
+}
+.img-fluid2{
+    width: 100%;
+}
+.mensaje{
+    margin: 35px auto;
+    text-align: center;
+}
+/*------------ For small screens------------*/
+
+@media only screen and (max-width: 768px){
+
+    .box-area{
+        margin: 0 10px;
+    }
+    .rounded-4{
+        height: max-content !important;
+    }
+    .img-fluid2{
+        display: none;
+    }
+     .left-box{
+        height: 100px;
+        overflow: hidden;
+    }
+    .right-box{
+       padding: 20px;
+    }
+
+}
+
+.width-style1 {
+  width: 250px;
+}
+
+.width-style2 {
+  width: 20px;
+}
+
+.head{
+    background-color: #fff;
+}
+.mlat{
+    display: flex;
+    background-color: #23539e;
+    width: max-content !important;
+    height: 95vh;
+    color: white;
+    align-self: center;
+}
+.bienvenida{
+    position: relative;
+    width: 100%;
+    height: 95vh;
+    overflow: hidden;
+}
+.list-unstyled{
+    align-self: center;
+}
+.text-overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    text-align: center;
+    color: black;
+}
+.formadm{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.text-overlay h1{
+    width: 50%;
+    margin: 0;
+    font-weight: bold;
+    padding: 20px;
+}
+.mlat h2{
+    font-size: medium;
+}
+.rol{
+    display: flex;
+    justify-content: end;
+}
+.adm{
+    background-color: rgba(255, 255, 25, 0.831);
+    align-content: center;
+}
+.emp{
+    align-self: center;
+}
+.img_L{
+    width: 50px;
+    height: 50px;
+}
+
+.gestionUsuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainContainer{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    background-color: #fff;
+    width: 94%;
+    height: 86vh;
+    border-radius: 30px;
+}
+.mainContainer1{
+    background-color: #fff;
+    width: 94%;
+    height: 86vh;
+    border-radius: 30px;
+}
+.botones1{
+    text-size-adjust: auto;
+    width: 200px !important;
+    height: 200px;
+    background-color: #003b9adf !important;
+    border-radius: 15px !important;
+}
+.botones p {
+    text-align: center;
+    margin: 10px auto;
+}
+.boton-atras{
+    margin: 30px;
+    padding: 8px !important;
+}
+@media (max-width: 992px){
+    .logos{
+        text-align: center;
+    }
+    .salir{
+        margin: 0;
+    }
+    .rol{
+        font-size: 0.7em;
+        padding: 10px;
+    }
+    .adm a{
+        padding: 1px;
+    }
+    .mlat{
+        width: 118vh !important;
+        min-height: auto;
+        height: 100%;
+        order: 1;
+        justify-content: center;
+    }
+    .mlat ul{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .mlat ul li{
+        display: flex;
+        justify-content: space-between;
+        margin: 0 20px;
+    }
+    .mlat ul li h2{
+        display: none;
+    }
+    .bienvenida{
+        order: 2;
+        height: auto;
+    }
+    .bienvenida img{
+        height: 100vh;
+        width: 100%;
+        order: 2;
+        position: relative;
+    }
+    .text-overlay{
+        order: 1;
+        width: 100%;
+        height: 100%;
+        background: none;
+    }
+    .text-overlay h1{
+        width: 100%;
+        background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    }
+}

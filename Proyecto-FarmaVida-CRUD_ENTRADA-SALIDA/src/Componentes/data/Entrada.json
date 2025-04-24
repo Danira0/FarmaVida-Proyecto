@@ -1,0 +1,81 @@
+[
+    {
+      "id_producto": 1,
+      "id_prov": 2,
+      "id_cat": 2,
+      "f_entrada": "2024-09-01",
+      "nombre": "Paracetamol 500mg",
+      "v_venta": 14.000,
+      "stock_actual": 120,
+      "f_vencimiento": "2025-12-31",
+      "id_estado": 3
+    },
+    {
+      "id_producto": 2,
+      "id_prov": 4,
+      "id_cat": 1,
+      "f_entrada": "2024-08-15",
+      "nombre": "Amoxicilina 500mg",
+      "v_venta": 21.000,
+      "stock_actual": 20,
+      "f_vencimiento": "2026-06-30",
+      "id_estado": 1
+    },
+    {
+      "id_producto": 4,
+      "id_prov": 8,
+      "id_cat": 7,
+      "f_entrada": "2024-09-10",
+      "nombre": "Clorfemina 4mg",
+      "v_venta": 12.000,
+      "stock_actual": 200,
+      "f_vencimiento": "2027-03-10",
+      "id_estado": 3
+    },
+    {
+      "id_producto": 5,
+      "id_prov": 10,
+      "id_cat": 4,
+      "f_entrada": "2024-09-05",
+      "nombre": "Metformina 850mg",
+      "v_venta": 10.000,
+      "stock_actual": 90,
+      "f_vencimiento": "2025-10-25",
+      "id_estado": 1
+    },
+    {
+    "id_producto": 6,
+    "id_prov": 12,
+    "id_cat": 6,
+    "f_entrada": "2024-07-10",
+    "nombre": "Omeprazol 20mg",
+    "v_venta": 9.000,
+    "stock_actual": 0,
+    "f_vencimiento": "2025-07-10",
+    "id_estado": 4
+  },
+  {
+    "id_producto": 7,
+    "id_prov": 14,
+    "id_cat": 2,
+    "f_entrada": "2024-09-05",
+    "nombre": "Simvastatina 20mg",
+    "v_venta": 25.000,
+    "stock_actual": 150,
+    "f_vencimiento": "2025-09-05",
+    "id_estado": 1
+  },
+  {
+  "id_producto": 8,
+    "id_prov": 16,
+    "id_cat": 6,
+    "f_entrada": "2024-10-15",
+    "nombre": "Losartán 50mg",
+    "v_venta": 15.000,
+    "stock_actual": 40,
+    "f_vencimiento": "2025-10-15",
+    "id_estado": 5
+    }
+
+  ]
+  
