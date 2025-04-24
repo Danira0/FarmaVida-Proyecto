@@ -1,0 +1,482 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 25-11-2024 a las 23:58:18
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `farmavidav3_`
+--
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoria`
+--
+
+CREATE TABLE `categoria` (
+  `ID_Categoria` int(11) NOT NULL,
+  `nombre_categoria` varchar(100) NOT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `imagen_categoria` varchar(255) DEFAULT NULL,
+  `fecha_actualizacion` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcado de datos para la tabla `categoria`
+--
+  INSERT INTO `categoria` (`ID_Categoria`, `nombre_categoria`, `descripcion`, `imagen_categoria`) VALUES
+(1, 'Analgésicos', 'Medicamentos para el dolor', 'analgesicos.jpg'),
+(2, 'Antibióticos', 'Medicamentos para infecciones', 'antibioticos.jpg'),
+(3, 'Vitaminas', 'Suplementos vitamínicos', 'vitaminas.jpg'),
+(4, 'Antihistamínicos', 'Medicamentos para alergias', 'antihistaminicos.jpg'),
+(5, 'Antiinflamatorios', 'Medicamentos para inflamaciones', 'antiinflamatorios.jpg');
+-- --------------------------------------------------------
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleado`
+--
+
+CREATE TABLE `empleado` (
+  `ID_Empleado` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `direccion` varchar(255) DEFAULT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `salario` decimal(10,2) DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
+  `UsuarioID_Usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `empleado`
+--
+INSERT INTO `empleado` (`ID_Empleado`, `nombre`, `direccion`, `telefono`, `salario`, `fecha_registro`, `UsuarioID_Usuario`) VALUES
+(1, 'Pedro Sánchez', 'Calle 111', '3001112233', 1500.00, '2024-01-01', 1),
+(2, 'Laura Díaz', 'Calle 222', '3002223344', 1600.00, '2024-01-02', 2),
+(3, 'Sofía Martínez', 'Calle 333', '3003334455', 1700.00, '2024-01-03', 3),
+(4, 'Diego Ruiz', 'Calle 444', '3004445566', 1800.00, '2024-01-04', 4),
+(5, 'Carmen Vargas', 'Calle 555', '3005556677', 1900.00, '2024-01-05', 5);
+
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla `estado`
+--
+
+CREATE TABLE `estado` (
+  `ID_ESTADO` int(11) NOT NULL,
+  `nombre_estado` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `estado`
+--
+INSERT INTO `estado` (`ID_ESTADO`, `nombre_estado`) VALUES
+(1, 'Activo'),
+(2, 'Inactivo'),
+(3, 'Pendiente'),
+(4, 'Descontinuado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `iva`
+--
+
+CREATE TABLE `iva` (
+  `ID_IVA` int(11) NOT NULL,
+  `tasa` decimal(5,2) NOT NULL,
+  `descripcion` varchar(50) DEFAULT NULL,
+  `fecha_inicio` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `iva`
+--
+INSERT INTO `iva` (`ID_IVA`, `tasa`, `descripcion`, `fecha_inicio`) VALUES
+(1, 19.00, 'IVA General', '2024-01-01');
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `laboratorio`
+--
+CREATE TABLE `laboratorio` (
+  `ID_Laboratorio` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
+  `ciudad` varchar(100) DEFAULT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `correo_electronico` varchar(100) DEFAULT NULL,
+  `pagina_web` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `laboratorio`
+--
+INSERT INTO `laboratorio` (`ID_Laboratorio`, `nombre`, `direccion`, `ciudad`, `telefono`, `correo_electronico`, `pagina_web`) VALUES
+(1, 'LabGen', 'Calle 123', 'Bogotá', '3001234567', 'info@labgen.com', 'www.labgen.com'),
+(2, 'BioPharm', 'Avenida 456', 'Medellín', '3102345678', 'info@biopharm.com', 'www.biopharm.com'),
+(3, 'MediLab', 'Carrera 789', 'Cali', '3203456789', 'info@medilab.com', 'www.medilab.com'),
+(4, 'PharmaTech', 'Calle 321', 'Barranquilla', '3304567890', 'info@pharmatech.com', 'www.pharmatech.com'),
+(5, 'HealthLab', 'Avenida 654', 'Cartagena', '3405678901', 'info@healthlab.com', 'www.healthlab.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+CREATE TABLE `usuario` (
+  `ID_Usuario` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `nombre_usuario` varchar(100) NOT NULL,
+  `contrasena_usuario` varchar(255) NOT NULL,
+  `fecha_registro` datetime DEFAULT current_timestamp(),
+  `ROLID_ROL` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `usuario` (`ID_Usuario`, `nombre`, `apellido`, `correo`, `nombre_usuario`, `contrasena_usuario`, `ROLID_ROL`) VALUES
+(1, 'Juan', 'Pérez', 'juan.perez@example.com', 'juanperez', 'password1',  1),
+(2, 'María', 'Gómez', 'maria.gomez@example.com', 'mariagomez', 'password2', 2),
+(3, 'Carlos', 'López', 'carlos.lopez@example.com', 'carloslopez', 'password3', 2),
+(4, 'Ana', 'Torres', 'ana.torres@example.com', 'anatorres', 'password4', 2),
+(5, 'Luis', 'Ramírez', 'luis.ramirez@example.com', 'luisramirez', 'password5', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `movimiento_stock`
+--
+CREATE TABLE `movimiento_stock` (
+  `ID_STOCK` int(11) NOT NULL,
+  `ProductoID_PRODUCTO` int(11) NOT NULL,
+  `PresentacionID_Presentacion` int(11) NOT NULL,
+  `IVAID_IVA` int(11) NOT NULL,
+  `subtotal` DECIMAL(10,2) NOT NULL,
+  `total_venta` DECIMAL(10,2) NOT NULL, 
+  `UsuarioID_Usuario` int(11) NOT NULL,
+  `fecha_hora_movimiento` datetime DEFAULT current_timestamp(),
+  `cantidad` int(11) NOT NULL,
+  `tipo_movimiento` ENUM('Entrada', 'Salida', 'Ajuste', 'Devolucion', 'Descarte') NOT NULL,
+  `motivo` ENUM('Venta', 'Entrada_producto' , 'Devolucion_producto', 'Error_venta', 'Vencimiento', 'Defectuoso', 'Perdida', 'Otro') DEFAULT NULL,
+  `observaciones` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `movimiento_stock` (
+  `ID_STOCK`, 
+  `ProductoID_PRODUCTO`, 
+  `PresentacionID_Presentacion`, 
+  `IVAID_IVA`, 
+  `subtotal`, 
+  `total_venta`, 
+  `UsuarioID_Usuario`, 
+  `fecha_hora_movimiento`, 
+  `cantidad`, 
+  `tipo_movimiento`, 
+  `motivo`, 
+  `observaciones`
+) VALUES 
+-- Movimientos de Entrada (iniciales)
+(1, 1, 3, 1, 45000.00, 53550.00, 1, '2024-01-06 10:00:00', 15, 'Entrada', 'Entrada_producto', 'Compra inicial de Aspirina (Tabletas)'),
+(2, 3, 2, 1, 250000.00, 297500.00, 2, '2024-01-08 12:00:00', 25, 'Entrada', 'Entrada_producto', 'Compra inicial de Omeprazol (Cápsulas)'),
+(3, 6, 2, 1, 350000.00, 416500.00, 3, '2024-01-11 15:00:00', 50, 'Entrada', 'Entrada_producto', 'Compra inicial de Metformina (Cápsulas)'),
+(4, 8, 2, 1, 540000.00, 642600.00, 4, '2024-01-13 17:00:00', 45, 'Entrada', 'Entrada_producto', 'Compra inicial de Atorvastatina (Cápsulas)'),
+
+-- Movimientos de Salida (simulando ventas o salidas del inventario)
+(8, 1, 3, 1, 15000.00, 17850.00, 2, '2024-01-16 09:00:00', 5, 'Salida', 'Venta', 'Venta de Aspirina (Tabletas)'),
+(9, 3, 2, 1, 100000.00, 119000.00, 3, '2024-01-17 10:00:00', 10, 'Salida', 'Venta', 'Venta de Omeprazol (Cápsulas)'),
+(10, 6, 2, 1, 105000.00, 124950.00, 4, '2024-01-18 11:00:00', 15, 'Salida', 'Venta', 'Venta de Metformina (Cápsulas)'),
+(11, 8, 2, 1, 60000.00, 71400.00, 5, '2024-01-19 12:00:00', 5, 'Salida', 'Venta', 'Venta de Atorvastatina (Cápsulas)'),
+
+-- Movimientos de Ajuste (simulando correcciones en el inventario)
+(15, 1, 3, 1, 6000.00, 7140.00, 1, '2024-01-23 16:00:00', 2, 'Ajuste', 'Otro', 'Ajuste por inventario físico de Aspirina (Tabletas)');
+
+-- --------------------------------------------------------
+
+-- Estructura de tabla para la tabla `presentacion`
+CREATE TABLE `presentacion` (
+`ID_presentacion` int(11) NOT NULL,
+`nombre_presentacion` varchar(255) NOT NULL,
+`descripcion` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `presentacion` (`ID_Presentacion`, `nombre_presentacion`, `descripcion`) VALUES
+(1, 'Jarabe', 'Jarabe'),
+(2, 'Cápsulas', 'Cápsulas'),
+(3, 'Tabletas', 'Tabletas'),
+(4, 'Gotas', 'Gotas'),
+(5, 'Crema', 'Crema ');
+
+CREATE TABLE `producto` (
+  `ID_PRODUCTO` int(11) NOT NULL,
+  `fecha_entrada` date NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `valor_unitario` decimal(19,0) DEFAULT NULL,
+  `CategoriaID_Categoria` int(11) NOT NULL,
+  `LaboratorioID_Laboratorio` int(11) NOT NULL,
+  `PresentacionID_Presentacion` int(11) NOT NULL,
+  `EstadoID_Estado` int(11) NOT NULL,
+  `IVAID_IVA` int(11) NOT NULL,
+  `ImagenID_Imagen` int(11) NOT NULL,
+  `stock_minimo` int(11) NOT NULL,
+  `contenido_neto` varchar(50) DEFAULT NULL,
+  `cantidad_frascos` int(11) DEFAULT NULL,
+  `unidades_por_blister` int(11) DEFAULT NULL,
+  `cantidad_blister` int(11) DEFAULT NULL,
+  `cantidad_unidades` int(11) DEFAULT NULL,
+  `fecha_actualizacion` datetime DEFAULT current_timestamp(),
+  `lote` varchar(50) NOT NULL,
+  `fecha_vencimiento` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `producto` (`ID_PRODUCTO`, `fecha_entrada`, `nombre`, `descripcion`, `valor_unitario`, `CategoriaID_Categoria`, `LaboratorioID_Laboratorio`, `PresentacionID_Presentacion`, `IVAID_IVA`, `EstadoID_Estado`, `ImagenID_Imagen`, `stock_minimo`, `contenido_neto`, `cantidad_frascos`, `unidades_por_blister`, `cantidad_blister`, `cantidad_unidades`, `lote`, `fecha_vencimiento`) VALUES
+(1, '2024-01-06', 'Aspirina', 'Analgésico y antiinflamatorio', 3000.00, 1, 1, 3, 1, 1, 1, 15, '500 mg', NULL, 5, 15, 75, 'LOT006', '2025-06-01'),  -- Tabletas
+(2, '2024-01-07', 'Diclofenaco', 'Antiinflamatorio no esteroideo', 4500.00, 5, 2, 5, 1, 1, 2, 20, '50 mg', 100, NULL, NULL, NULL, 'LOT007', '2025-07-01'),  -- Crema
+(3, '2024-01-08', 'Omeprazol', 'Inhibidor de la bomba de protones', 10000.00, 1, 3, 2, 1, 1, 3, 25, '20 mg', NULL, 5, 25, 125, 'LOT008', '2025-08-01'),  -- Cápsulas
+(4, '2024-01-09', 'Cetirizina', 'Antihistamínico para alergias', 5500.00, 4, 4, 4, 1, 1, 4, 1, '10 mg', 150, NULL, NULL, NULL, 'LOT009', '2025-09-01'),  -- Gotas
+(5, '2024-01-10', 'Metformina', 'Antidiabético oral', 7000.00, 2, 1, 2, 1, 1, 5, 50, '500 mg', NULL, 10, 25, 250, 'LOT010', '2025-10-01'),  -- Cápsulas
+(6, '2024-01-11', 'Metformina', 'Antidiabético oral', 7000.00, 2, 1, 2, 1, 1, 6, 50, '500 mg', NULL, 10, 25, 250, 'LOT011', '2025-11-01'),  -- Cápsulas
+(8, '2024-01-13', 'Atorvastatina', 'Hipolipemiante', 12000.00, 2, 3, 2, 1, 1, 7, 45, '20 mg', NULL, 5, 45, 225, 'LOT013', '2026-01-01'),  -- Cápsulas
+(9, '2024-01-14', 'Clonazepam', 'Ansiolítico y anticonvulsivo', 11000.00, 1, 4, 4, 1, 1, 8, 55, '2 mg', 275, NULL, NULL, NULL, 'LOT014', '2026-02-01');  -- Gotas
+
+-- Crear la tabla `imagen`
+CREATE TABLE `imagen` (
+  `ID_Imagen` int(11) NOT NULL,
+  `imagen_producto` varchar(255) DEFAULT NULL,
+  `descripcion` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Insertar datos en la tabla `imagen`
+INSERT INTO `imagen` (`ID_Imagen`, `imagen_producto`, `descripcion`) VALUES
+(1,  'aspirina.jpg', 'Imagen de Aspirina'),
+(2, 'diclofenaco.jpg', 'Imagen de Diclofenaco'),
+(3, 'omeprazol.jpg', 'Imagen de Omeprazol'),
+(4, 'cetirizina.jpg', 'Imagen de Cetirizina'),
+(5, 'metformina.jpg', 'Imagen de Metformina'),
+(6, 'metformina_capsulas.jpg', 'Imagen de Metformina en cápsulas'),
+(7, 'atorvastatina_capsulas.jpg', 'Imagen de Atorvastatina en cápsulas'),
+(8, 'clonazepam_gotas.jpg', 'Imagen de Clonazepam en gotas');
+-- --------------------------------------------------------
+
+-- Estructura de tabla para la tabla `rol`
+--
+CREATE TABLE `rol` (
+  `ID_ROL` int(11) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `permisos` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `rol`
+INSERT INTO `rol` (`ID_ROL`, `descripcion`, `permisos`) VALUES
+(1, 'Admin', 'todos'),
+(2, 'Empleado', 'registrar_ventas, consultar_inventario');
+
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla `rol_usuario`
+CREATE TABLE `rol_usuario` (
+  `ROLID_ROL` int(11) NOT NULL,
+  `UsuarioID_Usuario` int(11) NOT NULL,
+  `fecha_asignacion` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `rol_usuario`
+--
+
+INSERT INTO `rol_usuario` (`ROLID_ROL`, `UsuarioID_Usuario`, `fecha_asignacion`) VALUES
+(1, 1, '2024-01-01'),
+(2, 2, '2024-01-02');
+
+-- --------------------------------------------------------
+
+-- Indices de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`ID_Categoria`);
+--
+-- Indices de la tabla `empleado`
+--
+ALTER TABLE `empleado`
+  ADD PRIMARY KEY (`ID_Empleado`),
+  ADD KEY `UsuarioID_Usuario` (`UsuarioID_Usuario`);
+
+--
+-- Indices de la tabla `estado`
+--
+ALTER TABLE `estado`
+  ADD PRIMARY KEY (`ID_ESTADO`);
+
+--
+-- Indices de la tabla `iva`
+--
+ALTER TABLE `iva`
+  ADD PRIMARY KEY (`ID_IVA`);
+
+--
+-- Indices de la tabla `laboratorio`
+--
+ALTER TABLE `laboratorio`
+  ADD PRIMARY KEY (`ID_Laboratorio`);
+
+--
+-- Indices de la tabla `movimiento_stock`
+--
+ALTER TABLE `movimiento_stock`
+  ADD PRIMARY KEY (`ID_STOCK`),
+  ADD KEY `ProductoID_PRODUCTO` (`ProductoID_PRODUCTO`),
+  ADD KEY `PresentacionID_Presentacion` (`PresentacionID_Presentacion`),
+  ADD KEY `UsuarioID_Usuario` (`UsuarioID_Usuario`),
+  ADD KEY `IVAID_IVA` (`IVAID_IVA`);
+
+--
+-- Indices de la tabla `presentacion`
+ALTER TABLE `presentacion`
+ADD PRIMARY KEY(`ID_presentacion`);
+
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`ID_PRODUCTO`),
+  ADD KEY `CategoriaID_Categoria` (`CategoriaID_Categoria`),
+  ADD KEY `LaboratorioID_Laboratorio` (`LaboratorioID_Laboratorio`),
+  ADD KEY `IVAID_IVA` (`IVAID_IVA`),
+  ADD KEY `PresentacionID_Presentacion` (`PresentacionID_Presentacion`),
+  ADD KEY `EstadoID_Estado` (`EstadoID_Estado`),
+  ADD KEY `ImagenID_Imagen` (`ImagenID_Imagen`);
+--
+-- Filtros para la tabla `imagen`
+--
+ALTER TABLE `imagen` 
+  ADD PRIMARY KEY (`ID_Imagen`);
+
+-- Indices de la tabla `rol`
+--
+ALTER TABLE `rol`
+  ADD PRIMARY KEY (`ID_ROL`);
+
+--
+-- Indices de la tabla `rol_usuario`
+--
+ALTER TABLE `rol_usuario`
+  ADD PRIMARY KEY (`ROLID_ROL`,`UsuarioID_Usuario`),
+  ADD KEY `UsuarioID_Usuario` (`UsuarioID_Usuario`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`ID_Usuario`),
+  ADD UNIQUE KEY `correo` (`correo`),
+  ADD KEY `ROLID_ROL` (`ROLID_ROL`);
+--
+-- AUTO_INCREMENT de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `ID_Categoria` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `empleado`
+--
+ALTER TABLE `empleado`
+  MODIFY `ID_Empleado` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `estado`
+--
+ALTER TABLE `estado`
+  MODIFY `ID_ESTADO` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `iva`
+--
+ALTER TABLE `iva`
+  MODIFY `ID_IVA` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `laboratorio`
+--
+ALTER TABLE `laboratorio`
+  MODIFY `ID_Laboratorio` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `movimiento_stock`
+--
+ALTER TABLE `movimiento_stock`
+  MODIFY `ID_STOCK` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `ID_PRODUCTO` int(11) NOT NULL AUTO_INCREMENT;
+
+  -- AUTO_INCREMENT de la tabla `imagen`
+  ALTER TABLE `imagen`
+   MODIFY `ID_Imagen` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `rol`
+--
+ALTER TABLE `rol`
+  MODIFY `ID_ROL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT;
+
+    -- AUTO_INCREMENT de la tabla `presentacion`
+
+
+-- Filtros para la tabla `empleado`
+--
+ALTER TABLE `empleado`
+  ADD CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`UsuarioID_Usuario`) REFERENCES `usuario` (`ID_Usuario`);
+
+--
+-- Filtros para la tabla `movimiento_stock`
+--
+ALTER TABLE `movimiento_stock`
+  ADD CONSTRAINT `movimiento_stock_ibfk_1` FOREIGN KEY (`ProductoID_PRODUCTO`) REFERENCES `producto` (`ID_PRODUCTO`),
+  ADD CONSTRAINT `movimiento_stock_ibfk_2` FOREIGN KEY (`PresentacionID_Presentacion`) REFERENCES `presentacion` (`ID_Presentacion`),
+  ADD CONSTRAINT `movimiento_stock_ibfk_3` FOREIGN KEY (`UsuarioID_Usuario`) REFERENCES `usuario` (`ID_Usuario`),
+  ADD CONSTRAINT `movimiento_stock_ibfk_4` FOREIGN KEY (`IVAID_IVA`) REFERENCES `iva` (`ID_IVA`);
+
+--
+-- Filtros para la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`CategoriaID_Categoria`) REFERENCES `categoria` (`ID_Categoria`),
+  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`LaboratorioID_Laboratorio`) REFERENCES `laboratorio` (`ID_Laboratorio`),
+  ADD CONSTRAINT `producto_ibfk_3` FOREIGN KEY (`IVAID_IVA`) REFERENCES `iva` (`ID_IVA`),
+  ADD CONSTRAINT `producto_ibfk_4` FOREIGN KEY (`PresentacionID_Presentacion`) REFERENCES `presentacion` (`ID_presentacion`),
+  ADD CONSTRAINT `producto_ibkf_5` FOREIGN KEY (`EstadoID_Estado`) REFERENCES `estado` (`ID_ESTADO`),
+  ADD CONSTRAINT `producto_ibkf_6` FOREIGN KEY (`ImagenID_Imagen`) REFERENCES `imagen` (`ID_Imagen`);
+
+-- Filtros para la tabla `imagen`
+--
+-- Filtros para la tabla `rol_usuario`
+--
+ALTER TABLE `rol_usuario`
+  ADD CONSTRAINT `rol_usuario_ibfk_1` FOREIGN KEY (`ROLID_ROL`) REFERENCES `rol` (`ID_ROL`),
+  ADD CONSTRAINT `rol_usuario_ibfk_2` FOREIGN KEY (`UsuarioID_Usuario`) REFERENCES `usuario` (`ID_Usuario`);
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`ROLID_ROL`) REFERENCES `rol` (`ID_ROL`);
