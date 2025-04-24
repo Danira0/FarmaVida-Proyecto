@@ -1,0 +1,29 @@
+Productos
+
+GET /api/productos: Obtiene todos los productos con información detallada.
+GET /api/productos/porVencer: Productos próximos a vencer puedes especificar días
+GET /api/productos/enStock: Productos en stock con cálculo de existencias basado en movimientos.
+GET /api/productos/porFechaIngreso: Productos filtrados por fecha de ingreso 
+GET /api/productos/:id: Detalles de un producto específico.
+
+Movimientos
+
+GET /api/movimientos: Todos los movimientos con detalles del producto y usuario.
+GET /api/movimientos/porFecha: Movimientos filtrados por fecha.
+GET /api/movimientos/porProducto/:productoId: Movimientos de un producto específico.
+GET /api/movimientos/porUsuario/:usuarioId: Movimientos realizados por un usuario específico.
+GET /api/movimientos/porTipo/:tipo: Movimientos filtrados por tipo (Entrada, Salida, etc.).
+
+Usuarios
+
+GET /api/usuarios: Todos los usuarios con información de rol y empleado.
+GET /api/usuarios/porRol/:rolId: Usuarios filtrados por rol (1=Admin, 2=Empleado).
+GET /api/usuarios/empleados: Lista de empleados con detalles.
+GET /api/usuarios/porFechaRegistro: Usuarios filtrados por fecha de registro.
+GET /api/usuarios/:id: Detalles de un usuario específico.
+
+Laboratorios (Proveedores)
+
+GET /api/laboratorios: Todos los laboratorios/proveedores.
+GET /api/laboratorios/:id: Detalles de un laboratorio específico.
+GET /api/laboratorios/:labId/productos: Productos de un laboratorio específico.
