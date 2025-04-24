@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivityInicio">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Imagen de fondo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/imag1" />
+
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="546dp"
+        android:layout_marginBottom="168dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            app:srcCompat="@drawable/imag2" />
+        <!-- Campo de Usuario -->
+        <EditText
+            android:id="@+id/editTextUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="18dp"
+            android:background="@android:color/transparent"
+            android:hint="Usuario"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="#A0A0A0" />
+
+        <!-- Campo de Contraseña -->
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="28dp"
+            android:background="@android:color/transparent"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="#A0A0A0" />
+
+        <Button
+            android:id="@+id/buttonIniciarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="38dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#087481"
+            android:elevation="3dp"
+            android:padding="12dp"
+            android:text="Iniciar Sesión"
+            android:textAllCaps="false"
+            android:textColor="#FFE500"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="¿No tienes cuenta? Regístrate"
+            android:textAlignment="center"
+            android:textColor="#D1C43D"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textViewOlvidasteContrasena"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="¿Olvidaste tu contraseña?"
+            android:textColor="#D1C43D"
+            android:clickable="true"
+            android:focusable="true"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
